@@ -27,5 +27,6 @@ int main(int argc, const char * argv[]) {
     
     
     std::cout << "Hello, test!\n";
+	std::cin.get();
     return 0;
 }
