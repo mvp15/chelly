@@ -1,0 +1,6 @@
+Tile::removeWarrior
+Feld::moveWarrior
+nützliche Printfunktionen für andere Klassen
+2. player
+warrior einem player zuweisen
+player-warrior paradoxon
