@@ -10,10 +10,10 @@
 #define spiel_Tile_h
 
 struct Tile {
-    bool occ = false;
+    bool occ = false; // is the Tile occupied by warriors?
     std::vector<Warrior*> warriorsOnTile;// vector of pointers on warriors currently on Tile
-    int nWarriors = 0;
-    void addWarrior(Warrior& warrior); //adding a warrior to a Tile
+    int nWarriors = 0; // number of warriors on Tile
+    void addWarrior(Warrior& warrior); // adding a warrior to a Tile
 };
 
 void Tile::addWarrior(Warrior& warrior) {

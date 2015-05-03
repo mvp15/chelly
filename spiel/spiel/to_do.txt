@@ -4,3 +4,42 @@ nützliche Printfunktionen für andere Klassen
 2. player
 warrior einem player zuweisen
 player-warrior paradoxon
+
+Armins Vorschläge zur Strukturierung:
+
+class StrategyParameters
+    Klasse die die Strategie des Spielers als Satz von irgendwelchen Parametern enthält
+    eine Instanz der Klasse sollte auch Mitglied in der Klasse Player sein, um dem Player eine Taktik zuordnen zu können
+
+class Move
+    Klasse die alle nötigen Funktionen enthält, um einen Spielzug im Spiel durchzuführen (also um alle Warrior von allen Playern um einen Spielzug nach vorne zu bringen).
+
+void Move::moveOnTile(&Tile, &Player)
+    Funktion, die anhand der Taktik eines Spielers einen Spielzug für ein Tile durchführt (also alle Warrior bewegt etc.).
+
+Move::vorläufigesFeld
+Um einen Spielzug durchzuführen, müssen wir für jedes Tile einzeln entscheiden, was mit dem Warriorn bei dem Zug zu tun ist. Ein Zug auf einem anderen Tile darf aber nicht den Zug zur selben Zeit auf einem anderen Tile beeinflussen. Daher müssen wir die Bewegungen der Warrior zwischenspeichern und das Feld, erst nachdem alle Züge ausgewerten wurden, mit den neuen Positionen der Warrior aktualisieren. Zum Zwischenspeichern habe ich zwei Vorschläge:
+
+    1. Bei jedem Move erstellen wir ein leeres Feld, in das wir die neue Position der Warrior speichern. Nach dem Aussführen der Züge auf allen Feldern kopieren das vorläufge Feld auf das richtige Feld.
+    2. Jedes Tile bekommt eine zweite Liste von Warriorn, die als vorläufige Liste dient. D.h. die bewegten Warrior werden in der zweiten Liste gespeichert. Nach dem Ausführen des Zuges auf allen Tiles werden die Warrior innerhalb der Tiles rüberkopiert.
+
+    Ich würde 2. bevorzugen, da wir dann nicht mit einem zusätzlichen Feld rumhantieren (erstellen, Zeug machen, ordentlich vernichten) müssen. Das stellt sicher, dass unser Speicherplatz nicht explodiert.
+
+void Move::copyNewConfiguration()
+    Kopiert das vorläufige Feld auf das rchtige Feld (egal ob nach Variante 1 oder 2 (s.o.)).
+
+std::vector<Tile*> Move::getNeighbourTiles(&Tile)
+Funktion, die einen std::vector mit Adressen auf die benachbarten Tiles zurückwirft. Die Nachbarn können dann analysiert werden (Verteilung der befreundeten/befeindeten Warriors etc.), um dann anhand der Taktik den nächsten Zug zu wählen.
+
+class Move::AnalyzeNeighbours
+    Unterklasse von Move, die die Nachbarn anaysiert. Ich würde das als Unterklasse definieren, da die Analyse der Nachbarn ziemlich wichtig für das Spiel ist und variabel gehalten werden sollte, falls wir noch etwas hinzufügen wollen. Als Mitglieder der Klasse sollten wir alle wichtigen Analysedaten (Warriorverteilung etc.) speichern.
+
+void Move::Fight(&Feld)
+    Funktion, die alle Warrior, die sich begegnen kämpfen lässt und zufällig entscheidet, wer stirbt. Diese Funktion sollte am Anfang/Ende jedes Moves aufgerufen werden.
+
+void Move::FightOnTile(&Tile)
+Kampf der Warrior auf einer Tile. Diese Funktion wird von void Move::Fight(&Feld) auf allen Tiles aufgerufen.
+
+Allgemeine Hinweise:
+- Pointer: Wir sollten darauf achten, dass wir immer nur die Adresse auf die Objekte speichern und nicht aus Versehen die Adresse der Adresse oder so. Deshalb sollten wir uns bei jeder neuen Funktion beim Debugging alle Adressen aller Objekte auswerfen alssen um vergleichen zu können (dann am besten nur mit insgesamt 10 Warriorn oder so).
+

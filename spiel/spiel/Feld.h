@@ -11,10 +11,11 @@
 
 class Feld {
 public:
-    Feld();
-    int fieldSize = 10;
+    Feld(); //constructor
+    int fieldSize = 10; //field will contain fieldSize*fieldSize Tiles
     Tile** feld; // matrix of tiles
     void print();
+    //function that puts all warriors of the player at position (i,j)
     void startGame(Player& player, int i, int j);
 };
 
