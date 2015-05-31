@@ -1,29 +1,31 @@
 //
-//  Feld.h
+//  Feld.cc
 //  spiel
 //
-//  Created by Armin Kekić on 29.03.15.
+//  Created by Armin Kekić on 01.06.15.
 //  Copyright (c) 2015 Armin Kekić. All rights reserved.
 //
 
-#ifndef spiel_Feld_h
-#define spiel_Feld_h
+#include <stdio.h>
+#include <iostream>
+#include <vector>
+#include <cassert>
 
-class Feld {
-public:
-    Feld(); //constructor
-    int fieldSize = 10; //field will contain fieldSize*fieldSize Tiles
-    Tile** feld; // matrix of tiles
-    void print();
-    //function that puts all warriors of the player at position (i,j)
-    void startGame(Player& player, int i, int j);
-    void moveWarrior(Warrior* warrior, Tile& fromTile, Tile& toTile);//move warrior from warrior list of fromTile to tmp warrior List of toTile
-};
+#include "Feld.h"
+#include "Player.h"
+
 
 Feld::Feld(){
     feld = new Tile*[fieldSize]; //initialize list of arrays
     for (int i=0; i<fieldSize; ++i) {
         feld[i] = new Tile[fieldSize]; //initialize arrays
+    }
+    //store indices of tiles in field inside the tiles
+    for (int i=0; i<fieldSize; ++i) {
+        for (int j=0; j<fieldSize; ++j) {
+            feld[i][j].feldIndexI = i;
+            feld[i][j].feldIndexJ = j;
+        }
     }
 }
 
@@ -50,4 +52,10 @@ void Feld::moveWarrior(Warrior* warrior, Tile& fromTile, Tile &toTile){
     fromTile.removeWarrior(warrior);
 }
 
-#endif
+void Feld::tmpToNonTmp(){
+    for (int i=0; i<fieldSize; ++i) {
+        for (int j=0; j<fieldSize; ++j) {
+            feld[i][j].tmpToNonTmp();
+        }
+    }
+}

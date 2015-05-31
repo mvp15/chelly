@@ -3,10 +3,16 @@
 #include <vector>
 #include <cassert>
 
+#include "Surrounding.h"
 #include "Warrior.h"
 #include "Player.h"
 #include "Tile.h"
 #include "Feld.h"
+
+#include "Warrior.cc"
+#include "Player.cc"
+#include "Tile.cc"
+#include "Feld.cc"
 
 using namespace std;
 
@@ -25,11 +31,10 @@ int main(int argc, const char * argv[]) {
     Tile currentTile = testfeld.feld[0][0];
     Tile toTile = testfeld.feld[0][1];
     for (int i=0;!(testfeld.feld[0][0].warriorsOnTile.empty()); ++i) {
-        Warrior* currentWarrior = testfeld.feld[0][0].warriorsOnTile[i];
+        Warrior* currentWarrior = testfeld.feld[0][0].warriorsOnTile[0];
         testfeld.moveWarrior(currentWarrior, testfeld.feld[0][0], testfeld.feld[0][1]);
-        std::cout<<i<<std::endl;
     }
-    testfeld.feld[0][1].tmpToNonTmp();
+    testfeld.tmpToNonTmp();
     
     testfeld.print();
     

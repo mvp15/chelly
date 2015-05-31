@@ -8,12 +8,23 @@
 
 #ifndef spiel_Warrior_h
 #define spiel_Warrior_h
-class Player; //forward declaration of class Player such that we can use a pointer to it
 
+#include "Surrounding.h"
+
+class Player; //forward declaration of class Player such that we can use a pointer to it
+class Tile;//forward declaration of class Tile such that we can use a pointer to it
 class Warrior {
 public:
     bool alive = true;
+    
     Player* plr; //pointer to the player the warior belongs to
+    
+    Tile* tileOfWarrior;
+    
+    Surrounding getSurrounding();
+    
 };
+
+
 
 #endif

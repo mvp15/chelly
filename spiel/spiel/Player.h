@@ -18,13 +18,6 @@ public:
     const int nWarriors = 100;
 };
 
-Player::Player() {
-    for (int i=0; i<nWarriors; ++i) {
-        Warrior* newWarrior = new Warrior;
-        warriorList.push_back(*newWarrior);
-    }
-}
-
 //Player::~Player(){
 //    for (int i=0; i<nWarriors; ++i) {
 //        delete warriorList[i];

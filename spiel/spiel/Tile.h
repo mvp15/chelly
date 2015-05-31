@@ -9,6 +9,9 @@
 #ifndef spiel_Tile_h
 #define spiel_Tile_h
 
+class Feld;
+class Warrior;
+
 class Tile {
 public:
     bool occ = false; // is the Tile occupied by warriors?
@@ -25,40 +28,19 @@ public:
     
     void removeWarrior(Warrior* warrior); // removing a warrior from tile
     
+    void removeWarriorTmp(Warrior* warrior); // removing a warrior from temp warrior list
+    
     void tmpToNonTmp(); //Move the warriors from the temporary warrior list to the non-temporary warrior list
+    
+    Feld* feldOfTile;
+    
+    //inicey of the tile in the field in which it was created
+    int feldIndexI = -1;
+    int feldIndexJ = -1;
     
 };
 
-void Tile::addWarrior(Warrior* warrior) {
-    warriorsOnTile.push_back(warrior);
-    nWarriors++;
-}
 
-void Tile::addWarriorTmp(Warrior* warrior) {
-    warriorsOnTileTmp.push_back(warrior);
-    nWarriors++;
-}
-
-void Tile::removeWarrior(Warrior* warrior) {
-    //find Warrior to delete in warriorsOnTile
-    std::vector<Warrior*>::iterator iter;
-    iter = std::find(warriorsOnTile.begin(), warriorsOnTile.end(), warrior);
-    
-    //erase that Warrior from warriorsOnTile
-    
-    warriorsOnTile.erase(iter);
-    nWarriors--;
-}
-
-void Tile::tmpToNonTmp() {
-    assert(warriorsOnTile.empty());
-    
-    //copy tmp to non tmp
-    warriorsOnTile = warriorsOnTileTmp;
-    
-    //delete tmp
-    warriorsOnTile.clear();
-}
     
 
 #endif
