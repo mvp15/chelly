@@ -8,9 +8,12 @@
 
 #ifndef spiel_Warrior_h
 #define spiel_Warrior_h
+class Player; //forward declaration of class Player such that we can use a pointer to it
 
-struct Warrior {
+class Warrior {
+public:
     bool alive = true;
+    Player* plr; //pointer to the player the warior belongs to
 };
 
 #endif

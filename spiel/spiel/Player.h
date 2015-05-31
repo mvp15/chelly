@@ -9,9 +9,11 @@
 #ifndef spiel_Player_h
 #define spiel_Player_h
 
-struct Player {
+#include "Warrior.h"
+
+class Player {
+public:
     Player(); //Constructor
-    int dummy;
     std::vector<Warrior> warriorList; // array containing warriors
     const int nWarriors = 100;
 };
@@ -22,5 +24,11 @@ Player::Player() {
         warriorList.push_back(*newWarrior);
     }
 }
+
+//Player::~Player(){
+//    for (int i=0; i<nWarriors; ++i) {
+//        delete warriorList[i];
+//    }
+//}
 
 #endif

@@ -1,6 +1,7 @@
 
 #include <iostream>
 #include <vector>
+#include <cassert>
 
 #include "Warrior.h"
 #include "Player.h"
@@ -18,6 +19,21 @@ int main(int argc, const char * argv[]) {
     
     testfeld.startGame(player1, 0, 0);
     testfeld.print();
+    
+    
+    //test moving Warriors
+    Tile currentTile = testfeld.feld[0][0];
+    Tile toTile = testfeld.feld[0][1];
+    for (int i=0;!(testfeld.feld[0][0].warriorsOnTile.empty()); ++i) {
+        Warrior* currentWarrior = testfeld.feld[0][0].warriorsOnTile[i];
+        testfeld.moveWarrior(currentWarrior, testfeld.feld[0][0], testfeld.feld[0][1]);
+        std::cout<<i<<std::endl;
+    }
+    testfeld.feld[0][1].tmpToNonTmp();
+    
+    testfeld.print();
+    
+    
 //    Adressentest
 //    cout << "Im Feld:" << endl;
 //    for (int i=0; i<100; ++i) {
@@ -25,8 +41,5 @@ int main(int argc, const char * argv[]) {
 //        cout << testfeld.feld[0][0].warriorsOnTile[i] << " " << &player1.warriorList[i] << " " << same << endl;
 //    }
     
-    
-    std::cout << "Hello, test!\n";
-	std::cin.get();
     return 0;
 }

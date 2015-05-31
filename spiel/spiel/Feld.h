@@ -17,6 +17,7 @@ public:
     void print();
     //function that puts all warriors of the player at position (i,j)
     void startGame(Player& player, int i, int j);
+    void moveWarrior(Warrior* warrior, Tile& fromTile, Tile& toTile);//move warrior from warrior list of fromTile to tmp warrior List of toTile
 };
 
 Feld::Feld(){
@@ -39,9 +40,14 @@ void Feld::print() {
 void Feld::startGame(Player& player, int i, int j) {
     // start game at position (i,j)
     for (int l=0; l<player.nWarriors; ++l) {
-        feld[i][j].addWarrior(player.warriorList[l]); //add warrior to Tile
+        feld[i][j].addWarrior(&player.warriorList[l]); //add warrior to Tile
     }
     
+}
+
+void Feld::moveWarrior(Warrior* warrior, Tile& fromTile, Tile &toTile){
+    toTile.addWarriorTmp(warrior);
+    fromTile.removeWarrior(warrior);
 }
 
 #endif
