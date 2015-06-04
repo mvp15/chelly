@@ -1,7 +1,4 @@
-
 #include <iostream>
-#include <vector>
-#include <cassert>
 
 #include "Surrounding.h"
 #include "Warrior.h"
@@ -9,10 +6,6 @@
 #include "Tile.h"
 #include "Feld.h"
 
-//#include "Warrior.cc"
-//#include "Player.cc"
-//#include "Tile.cc"
-//#include "Feld.cc"
 
 using namespace std;
 

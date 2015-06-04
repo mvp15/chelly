@@ -16,6 +16,9 @@ Surrounding Warrior::getSurrounding(){
     Surrounding* surr = new Surrounding;
     
     int indexI = (*tileOfWarrior).feldIndexI;
+    int indexJ = (*tileOfWarrior).feldIndexJ;
+    
+    
     
     return *surr;
 }

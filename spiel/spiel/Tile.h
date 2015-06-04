@@ -19,33 +19,49 @@ class Warrior;
 
 class Tile {
 public:
-    bool occ = false; // is the Tile occupied by warriors?
+    // is the Tile occupied by warriors?
+    bool occ = false;
     
-    std::vector<Warrior*> warriorsOnTile;// vector of pointers on warriors currently on Tile
+    // vector of pointers on warriors currently on Tile
+    std::vector<Warrior*> warriorsOnTile;
     
-    std::vector<Warrior*> warriorsOnTileTmp;//temporary list of warriors which have been moved on tile by move
+    //temporary list of warriors which have been moved on tile by move
+    std::vector<Warrior*> warriorsOnTileTmp;
     
-    int nWarriors = 0; // number of warriors on Tile
+    // number of warriors on Tile
+    int nWarriors = 0;
     
-    void addWarrior(Warrior* warrior); // adding a warrior to a Tile
+    // adding a warrior to a Tile
+    void addWarrior(Warrior* warrior);
     
-    void addWarriorTmp(Warrior* warrior); // adding a warrior to the temporary warrior list
+    // adding a warrior to the temporary warrior list
+    void addWarriorTmp(Warrior* warrior);
     
-    void removeWarrior(Warrior* warrior); // removing a warrior from tile
+    // removing a warrior from tile
+    void removeWarrior(Warrior* warrior);
     
-    void removeWarriorTmp(Warrior* warrior); // removing a warrior from temp warrior list
+    // removing a warrior from temp warrior list
+    void removeWarriorTmp(Warrior* warrior);
     
-    void tmpToNonTmp(); //Move the warriors from the temporary warrior list to the non-temporary warrior list
+    //Move the warriors from the temporary warrior list to the non-temporary warrior list
+    void tmpToNonTmp();
     
     Feld* feldOfTile;
     
-    //inicey of the tile in the field in which it was created
+    //inices of the tile in the field in which it was created
     int feldIndexI = -1;
     int feldIndexJ = -1;
     
-};
-
-
+    //return Tile in a certain direction w.r.t. this Tile
+    Tile* left();
+    Tile* right();
+    Tile* up();
+    Tile* down();
+    Tile* upleft();
+    Tile* upright();
+    Tile* downleft();
+    Tile* downright();
     
+};
 
 #endif
