@@ -8,6 +8,9 @@
 
 #ifndef spiel_Surrounding_h
 #define spiel_Surrounding_h
+
+#include <vector>
+
 enum occupancy{Friend, Enemy, Empty};
 
 struct Surrounding {

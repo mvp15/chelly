@@ -6,12 +6,10 @@
 //  Copyright (c) 2015 Armin Kekić. All rights reserved.
 //
 
-#include <stdio.h>
-#include <iostream>
-#include <vector>
-#include <cassert>
 
 #include "Warrior.h"
+
+#include "Surrounding.h"
 #include "Tile.h"
 
 Surrounding Warrior::getSurrounding(){

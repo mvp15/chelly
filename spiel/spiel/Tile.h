@@ -9,6 +9,11 @@
 #ifndef spiel_Tile_h
 #define spiel_Tile_h
 
+#include <vector>
+#include <cassert>
+
+//#include "Warrior.h"
+
 class Feld;
 class Warrior;
 

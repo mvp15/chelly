@@ -6,12 +6,10 @@
 //  Copyright (c) 2015 Armin Kekić. All rights reserved.
 //
 
-#include <stdio.h>
-#include <iostream>
-#include <vector>
-#include <cassert>
 
 #include "Tile.h"
+
+#include "Warrior.h"
 
 void Tile::addWarrior(Warrior* warrior) {
     warriorsOnTile.push_back(warrior);

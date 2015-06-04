@@ -6,13 +6,14 @@
 //  Copyright (c) 2015 Armin Kekić. All rights reserved.
 //
 
-#include <stdio.h>
 #include <iostream>
 #include <vector>
-#include <cassert>
 
 #include "Feld.h"
+
+#include "Tile.h"
 #include "Player.h"
+#include "Warrior.h"
 
 
 Feld::Feld(){
@@ -42,7 +43,7 @@ void Feld::print() {
 void Feld::startGame(Player& player, int i, int j) {
     // start game at position (i,j)
     for (int l=0; l<player.nWarriors; ++l) {
-        feld[i][j].addWarrior(&player.warriorList[l]); //add warrior to Tile
+        feld[i][j].addWarrior(&(player.warriorList[l])); //add warrior to Tile
     }
     
 }

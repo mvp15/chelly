@@ -6,12 +6,10 @@
 //  Copyright (c) 2015 Armin Kekić. All rights reserved.
 //
 
-#include <stdio.h>
-#include <iostream>
-#include <vector>
-#include <cassert>
 
 #include "Player.h"
+
+#include "Warrior.h"
 
 Player::Player() {
     for (int i=0; i<nWarriors; ++i) {

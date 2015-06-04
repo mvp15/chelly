@@ -9,10 +9,10 @@
 #include "Tile.h"
 #include "Feld.h"
 
-#include "Warrior.cc"
-#include "Player.cc"
-#include "Tile.cc"
-#include "Feld.cc"
+//#include "Warrior.cc"
+//#include "Player.cc"
+//#include "Tile.cc"
+//#include "Feld.cc"
 
 using namespace std;
 

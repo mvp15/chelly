@@ -9,7 +9,11 @@
 #ifndef spiel_Player_h
 #define spiel_Player_h
 
-#include "Warrior.h"
+//#include "Warrior.h"
+#include <vector>
+
+class Warrior;
+
 
 class Player {
 public:
