@@ -9,7 +9,6 @@
 #ifndef spiel_Player_h
 #define spiel_Player_h
 
-//#include "Warrior.h"
 #include <vector>
 
 class Warrior;
@@ -18,8 +17,9 @@ class Warrior;
 class Player {
 public:
     Player(); //Constructor
+    ~Player();
     std::vector<Warrior> warriorList; // array containing warriors
-    const int nWarriors = 100;
+    static const int nWarriors = 100;
 };
 
 //Player::~Player(){

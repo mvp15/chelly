@@ -10,9 +10,7 @@
 #define spiel_Tile_h
 
 #include <vector>
-#include <cassert>
 
-//#include "Warrior.h"
 
 class Feld;
 class Warrior;
@@ -31,6 +29,12 @@ public:
     // number of warriors on Tile
     int nWarriors = 0;
     
+    Feld* feldOfTile;
+    
+    //inices of the tile in the field in which it was created
+    int feldIndexI = -1;
+    int feldIndexJ = -1;
+    
     // adding a warrior to a Tile
     void addWarrior(Warrior* warrior);
     
@@ -45,12 +49,6 @@ public:
     
     //Move the warriors from the temporary warrior list to the non-temporary warrior list
     void tmpToNonTmp();
-    
-    Feld* feldOfTile;
-    
-    //inices of the tile in the field in which it was created
-    int feldIndexI = -1;
-    int feldIndexJ = -1;
     
     //return Tile in a certain direction w.r.t. this Tile
     Tile* left();

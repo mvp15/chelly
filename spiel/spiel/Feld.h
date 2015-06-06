@@ -9,8 +9,6 @@
 #ifndef spiel_Feld_h
 #define spiel_Feld_h
 
-//#include "Tile.h"
-//#include "Player.h"
 
 //class Tile;
 class Player;
@@ -30,11 +28,12 @@ public:
     //function that puts all warriors of the player at position (i,j)
     void startGame(Player& player, int i, int j);
     
-    void moveWarrior(Warrior* warrior, Tile& fromTile, Tile& toTile);//move warrior from warrior list of fromTile to tmp warrior List of toTile
+    //move warrior from warrior list of fromTile to tmp warrior List of toTile
+    void moveWarrior(Warrior* warrior, Tile& fromTile, Tile& toTile);
     
-    void tmpToNonTmp(); //Calls tmpToNonTmp on all tiles of the field
+    //Calls Tile::tmpToNonTmp on all tiles of the field
+    void tmpToNonTmp();
 };
-
 
 
 #endif

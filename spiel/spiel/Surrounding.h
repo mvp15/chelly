@@ -11,14 +11,30 @@
 
 #include <vector>
 
-enum occupancy{Friend, Enemy, Empty};
+class Player;
+class Tile;
 
-struct Surrounding {
+
+enum occupancy{Friend, Enemy, Empty, NoTile};
+
+class Surrounding {
+public:
     struct SurroundingTile {
         occupancy occ;
         int nWarriors;
     };
+    
+    SurroundingTile tileToSurroundingTile(Player* player, Tile* tile);
+    
+    static const int nSurroundingTiles = 9;
+    
+    Surrounding();
+    
+    ~Surrounding();
+    
     std::vector<SurroundingTile> surroundingTilesList;
+    
+    void print();
 };
 
 #endif

@@ -7,6 +7,7 @@
 //
 
 #include <iostream>
+#include <iomanip>
 #include <vector>
 
 #include "Feld.h"
@@ -26,6 +27,7 @@ Feld::Feld(){
         for (int j=0; j<fieldSize; ++j) {
             feld[i][j].feldIndexI = i;
             feld[i][j].feldIndexJ = j;
+            feld[i][j].feldOfTile = this;
         }
     }
 }
@@ -33,7 +35,7 @@ Feld::Feld(){
 void Feld::print() {
     for (int i=0; i<fieldSize; ++i) {
         for (int j=0; j<fieldSize; ++j) {
-            std::cout << "[" << feld[i][j].nWarriors << "] ";
+            std::cout << "[" << std::setw(3) << std::left << feld[i][j].nWarriors << "] ";
         }
         std::cout << std::endl;
     }

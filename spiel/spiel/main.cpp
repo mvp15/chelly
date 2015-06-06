@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iomanip>
 
 #include "Surrounding.h"
 #include "Warrior.h"
@@ -8,6 +9,7 @@
 
 
 using namespace std;
+
 
 int main(int argc, const char * argv[]) {
     
@@ -23,7 +25,7 @@ int main(int argc, const char * argv[]) {
     //test moving Warriors
     Tile currentTile = testfeld.feld[0][0];
     Tile toTile = testfeld.feld[0][1];
-    for (int i=0;!(testfeld.feld[0][0].warriorsOnTile.empty()); ++i) {
+    for (int i=0;i<50; ++i) {
         Warrior* currentWarrior = testfeld.feld[0][0].warriorsOnTile[0];
         testfeld.moveWarrior(currentWarrior, testfeld.feld[0][0], testfeld.feld[0][1]);
     }
@@ -31,13 +33,10 @@ int main(int argc, const char * argv[]) {
     
     testfeld.print();
     
+    Surrounding surr = testfeld.feld[0][1].warriorsOnTile[0]->getSurrounding();
+    std::cout << "Surrounding:" << std::endl;
+    surr.print();
     
-//    Adressentest
-//    cout << "Im Feld:" << endl;
-//    for (int i=0; i<100; ++i) {
-//        bool same = (testfeld.feld[0][0].warriorsOnTile[i] == &player1.warriorList[i]);
-//        cout << testfeld.feld[0][0].warriorsOnTile[i] << " " << &player1.warriorList[i] << " " << same << endl;
-//    }
     
     return 0;
 }

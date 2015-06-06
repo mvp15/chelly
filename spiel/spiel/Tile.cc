@@ -46,13 +46,13 @@ void Tile::removeWarriorTmp(Warrior* warrior) {
 }
 
 void Tile::tmpToNonTmp() {
-    assert(warriorsOnTile.empty());
+//    assert(warriorsOnTile.empty());
     
     //copy tmp to non tmp
     warriorsOnTile = warriorsOnTileTmp;
     
     //delete tmp
-    warriorsOnTile.clear();
+    warriorsOnTileTmp.clear();
 }
 
 Tile* Tile::left(){

@@ -14,6 +14,11 @@
 Player::Player() {
     for (int i=0; i<nWarriors; ++i) {
         Warrior* newWarrior = new Warrior;
+        newWarrior->plr = this;
         warriorList.push_back(*newWarrior);
     }
+}
+
+Player::~Player(){
+    this->warriorList.clear();
 }
